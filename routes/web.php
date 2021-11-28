@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TurismoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('turismo')->group(function(){
+    Route::get('/', [TurismoController::class, 'index'] )->name('turismo.index');
+});
+
+
+Route::fallback(function() {
+    return "Erro!!";
 });
