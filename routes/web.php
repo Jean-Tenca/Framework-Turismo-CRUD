@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('turismo')->group(function(){
     Route::get('/', [TurismoController::class, 'index'] )->name('turismo.index');
+    Route::get('/create', [TurismoController::class, 'create'] )->name('turismo.create');
+    Route::post('/', [TurismoController::class, 'store'] )->name('turismo.store');
+    Route::get('/{id}/edit', [TurismoController::class, 'edit'] )->where('id', '[0-9]+')->name('turismo.edit');
+    Route::put('/{id}', [TurismoController::class, 'update'] )->where('id', '[0-9]+')->name('turismo.update');
+    Route::delete('/{id}', [TurismoController::class, 'destroy'] )->where('id', '[0-9]+')->name('turismo.destroy');
 });
 
 
